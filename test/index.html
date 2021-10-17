@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VUE</title>
+</head>
+
+<body>
+  <div id="root">
+    <h1>{{message}}</h1>
+    <img :src="img" :alt="message" />
+    <button @click="sayhi">sayhi</button>
+    <button @click="change">更换图片</button>
+    <div>
+      <!-- .stop 是阻止事件冒泡 -->
+      <button @click.stop="sub">-</button>
+      <span>{{number}}</span>
+      <button @click="add">+</button>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    const vue = new Vue({
+      el: "#root",
+      data: {
+        message: "hello world",
+        img: '../src/assets/hello-world.webp',
+        number: 0
+      },
+      methods: {
+        sayhi() {
+          alert('hi')
+        },
+        change() {
+          this.img = '../src/assets/logo.png';
+        },
+
+        sub() {
+          if (this.number <= 0) return;
+          this.number--
+        },
+        add() {
+          this.number++
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
